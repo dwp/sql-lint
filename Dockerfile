@@ -1,2 +1,10 @@
-FROM mysql:5.7.15
-ADD schema.sql /docker-entrypoint-initdb.d
+FROM node
+
+RUN mkdir sql-lint
+WORKDIR sql-lint
+ADD src src
+COPY *.* ./
+RUN yarn global add typescript
+RUN yarn install
+RUN tsc
+ENTRYPOINT [ "node", "./dist/src/main.js" ]
