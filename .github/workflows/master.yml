@@ -4,11 +4,6 @@ on:
   push:
     branches:
       - typescript
-    paths:
-      - "dist/**"
-      - "src/**"
-      - "test/**"
-      - "ci/**"
 
 env:
   IMAGE_NAME: dwpdigital/sql-lint

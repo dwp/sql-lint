@@ -2,9 +2,6 @@ name: Perform Snyk Scan
 
 on:
   pull_request:
-    paths-ignore:
-      - ".circleci/**"
-      - ".github/workflows/**"
 
 env:
   IMAGE_NAME: dwpdigital/sql-lint
