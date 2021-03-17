@@ -1,10 +1,17 @@
 FROM node
 
 RUN mkdir sql-lint
-WORKDIR sql-lint
+WORKDIR /sql-lint
+
 ADD src src
 COPY *.* ./
-RUN yarn global add typescript
-RUN yarn install
+
+# Uncomment the line below when building locally
+#RUN yarn config set "strict-ssl" false -g
+
+RUN yarn global add typescript \
+    && yarn install
+
 RUN tsc
+
 ENTRYPOINT [ "node", "./dist/src/main.js" ]
